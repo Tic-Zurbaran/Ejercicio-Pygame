@@ -1,1 +1,69 @@
-VlZwVRkcLaWypfBgLKZtVlZwPtccoKOipaDtpUyaLJ1yVTSmVUOaPzygpT9lqPOmrKZXPvZwVlOJLKWcLJWfMKZtVlZwPtbwVRAioT9lMKZtPtcvoTSwnlN9VPtjYQNfZPxXq2ucqTHtCFNbZwH1YQV1AFjlAGHcPtbwVSOuoaEuoTkuPtczpUZtCFN2ZNc0LJ1uj7SiVQ0tXQLjZPj0ZQNcPtbwVlZtH2I0qKNtVlZwPtbwVSO5M2SgMDbXpTphnJ5cqPtcPtbwVSMyoaEuozRtPtcjLJ50LJkfLFN9VUOaYzEcp3OfLKxhp2I0K21iMTHbqTSgLpBkolxXpTphMTympTkurF5mMKEsL2SjqTyiovtaH3OuL2HtFJ52LJEypaZaXDcwoT9wnlN9VUOaYaEcoJHhD2kiL2fbXDbXVlOWopBuM2IhMKZXPzMiozEiVQ0tpTphnJ1uM2HhoT9uMPtvMz9hMT8hpT5aVvxXozS2MFN9VUOaYzygLJqyYzkiLJDbVz5uqzHhpT5aVvxXPvZtHT9mnJAco25yplNXPz5uqzIspT9mK3ttCFNmZQNXPz5uqzIspT9mK3xtCFNlBQHXPtbwVlZtDaIwoTHtMTHtnaIyM28tVlZwPtc3nTyfMFOHpaIyBtbXPJMipvOyqzIhqPOcovOjMl5yqzIhqP5aMKDbXGbXPDxXPDycMvOyqzIhqP50rKOyVQ09VUOaYySIFID6PtxWPKA5pl5yrTy0XPxXPtxWnJLtMKMyoaDhqUyjMFN9CFOjMl5YEIyRG1qBBtbXPDxWnJLtMKMyoaDhn2I5VQ09VUOaYxgsLGbXPDxWPJ5uqzIspT9mK3ttYG0tZGNWPDbXPDxWnJLtMKMyoaDhn2I5VQ09VUOaYxgsMQbXPDxWPJ5uqzIspT9mK3ttXm0tZGNXPtxwVlZtEzyaqKWuplOyVTygLJqyozImVPZwVjbXPKOuoaEuoTkuYzMcoTjbq2ucqTHcPtbWpTShqTSfoTRhLzkcqPuzo25xoljtXQNfZPxcPtbWpTShqTSfoTRhLzkcqPuhLKMyYPNbozS2MI9jo3AsrPjtozS2MI9jo3AsrFxcPtbWpTphMTympTkurF51pTEuqTHbXDbXPt==
+### Librerías ###
+
+import pygame as pg
+import sys
+
+### Variables ###
+
+# Colores 
+
+black = (0,0,0)
+white = (255,255,255)
+
+# Pantalla
+
+fps = 60
+tamaño = (600,400)
+
+### Setup ###
+
+# Pygame
+
+pg.init()
+
+# Ventana 
+
+pantalla = pg.display.set_mode(tamaño)
+pg.display.set_caption('Space Invaders')
+clock = pg.time.Clock()
+
+# Imágenes
+
+fondo = pg.image.load("fondo.png")
+nave = pg.image.load("nave.png")
+
+# Posiciones 
+
+nave_pos_x = 300
+
+nave_pos_y = 285
+
+
+### Bucle de juego ###
+
+while True:
+
+	for event in pg.event.get():
+		
+		if event.type == pg.QUIT:
+			sys.exit()
+
+		if event.type == pg.KEYDOWN:
+
+			if event.key == pg.K_a:
+				nave_pos_x -= 10		
+
+			if event.key == pg.K_d:
+				nave_pos_x += 10
+
+	### Figuras e imagenes ###
+
+	pantalla.fill(white)
+
+	pantalla.blit(fondo, (0,0))
+
+	pantalla.blit(nave, (nave_pos_x, nave_pos_y))
+
+	pg.display.update()
+
+
